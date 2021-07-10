@@ -1,0 +1,19 @@
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan');
+const app = express();
+//settings server
+app.set('port', process.env.PORT || 3001);
+//Middlewares
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }))
+//template engine configuration
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+//static files
+app.use('/public', express.static(path.join(__dirname, 'public')));
+//configure routes
+app.use('/', require('./routes'))
+//listening server
+app.listen(app.get('port'), () => console.log(`server on port ${app.get('port')}`));
