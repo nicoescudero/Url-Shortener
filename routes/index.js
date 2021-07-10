@@ -1,26 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const validUrl = require('valid-url');
-const shortID = require('shortid');
+const urlSchema = require('../models/urlSchema');
 
-router.get('/', (req, res) => res.render('index'))//render template engine
 
-router.post('/urlc', (req, res) => {
-    var urlBase = "http://localhost:3001/";
-    var urlLong = req.body.urlInput;
+router.get('/', async (req, res) => {
+    const urls = await urlSchema.find();
+    const url = urls[urls.length - 1]
+    console.log(url.shortUrl);
+    res.render('index', { Url: url })
+})//render template engine
 
-    //create url code
-    var urlCode = shortID.generate();
-    //check long url
-
-    if (validUrl.isUri(urlLong)) {
-        var shortUrl = urlBase + urlCode
-        console.log(`url: ${shortUrl}`);
-    }
-
-    res.render('index', {
-        shortUrll: urlLong
-    });
+router.post('/shorten', async (req, res) => {
+    await urlSchema.create({ longUrl: req.body.urlInput });
+    res.redirect('/');
 })
+
+router.get('/:shortUrl', async (req, res) => {
+    const url = urlSchema.findOne({ shortUrl: req.params.shortUrl });
+    if (url == null) return res.sendStatus(404);
+    res.redirect(url.longUrl);
+});
 
 module.exports = router;

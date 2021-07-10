@@ -14,12 +14,22 @@
             <h3>URL SHORTENER</h3>
         </nav>
         <div class="container">
-            <form action="/urlc" method="post">
-                <input type="text" placeholder="insert url" name="urlInput">
+            <form action="/shorten" method="post">
+                <input type="url" placeholder="insert url" name="urlInput" id="urlInput">
                 <button type="submit">SHORTEN</button>
             </form>
             <input type="text" placeholder="url shortener" name="shortUrl">
             <button>COPY</button>
+            <table>
+                <tr>
+                    <th>Url shortener</th>
+                </tr>
+                <tr>
+                    <td><a href="<%= Url.longUrl%>">
+                            <%= Url.shortUrl%>
+                        </a></td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>
