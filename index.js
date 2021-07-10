@@ -6,7 +6,7 @@ const app = express();
 app.set('port', process.env.PORT || 3001);
 //Middlewares
 app.use(morgan('dev'));
-app.use(express.json());
+app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }))
 //template engine configuration
 app.set('view engine', 'ejs');
