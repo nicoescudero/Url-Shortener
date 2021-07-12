@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #444444;
+    color: thistle;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+.contain{
+    padding: 10px;
+    border: 2px solid springgreen;
+    width:60%;
+    height: auto;
+    align-items: center;
+    margin: 5% auto;    
+    justify-content: center;
+}
+h3{
+    color: turquoise;
+}
+
+a{
+    color:orange;
+}
+
+button{
+    background-color: #444444;
+    padding: 5px;
+    border: 1px solid springgreen;
+    border-radius: 5%;
+    color: thistle;
+}
+
+input{
+    height: 30px;
+    background-color: #444444;
+    color: orange;
+    border: 1px solid thistle;
+    border-radius: 5%;
+}
+/*border: groove 1px orange;*/
