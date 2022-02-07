@@ -5,7 +5,7 @@
 }
 
 body{
-    background: #444444;
+    background: #222;
     color: thistle;
     font-family: 'Do Hyeon', sans-serif;
 }
@@ -28,7 +28,7 @@ a{
 }
 
 button{
-    background-color: #444444;
+    background-color: inherit;
     padding: 5px;
     border: 1px solid springgreen;
     border-radius: 5%;
@@ -37,9 +37,20 @@ button{
 
 input{
     height: 30px;
-    background-color: #444444;
+    background-color: inherit;
     color: orange;
     border: 1px solid thistle;
-    border-radius: 5%;
+    border-radius: 1%;
+}
+
+.icon{
+    width: 16px;
+}
+
+td{
+    text-align: center;
+}
+.shortUrl{
+    padding:4px;
 }
 /*border: groove 1px orange;*/

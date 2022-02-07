@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="/public/style.css">
     <title>url shortener</title>
 </head>
-
 <body>
     <div class="contain">
         <nav>
@@ -17,19 +15,34 @@
         </nav>
         <div class="container">
             <form action="/shorten" method="post">
-                <input type="url" placeholder="insert url" name="urlInput" id="urlInput">
+                <input type="url" placeholder="insert url" name="urlInput" id="urlInput" autofocus>
                 <button type="submit">SHORTEN</button>
             </form>
             <br>
+            <% if (messageError && typeof(messageError)!=='undefined') { %>
+                <% messageError.forEach(error => { %>
+                    <p><%= error %> </p>
+                <% }) %>
+            <% } %>
+            <br>
             <table>
                 <tr>
+                    <th>Url</th>
                     <th>Url shortened</th>
                 </tr>
-                <tr>
-                    <td><a href="<%= Url.longUrl%>">
-                            <%= Url.shortUrl%>
-                        </a></td>
-                </tr>
+                <% if (urls) { %>
+                    <% urls.forEach(Url => { %>
+                        <tr>
+                            <td>
+                                <a href="<%= Url.longUrl%>"><%= Url.longUrl%></a>
+                            </td>
+                            <td class="shortUrl">
+                                <a href="<%= Url.longUrl%>"><%= Url.shortUrl%></a>
+                            </td>
+                            <td><a href="/delete/<%= Url._id %> "><img src="/public/icons/trash.png" alt="" class="icon"></a></td>
+                        </tr> 
+                    <% }) %>
+                <% } %>
             </table>
         </div>
     </div>
